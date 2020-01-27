@@ -1,4 +1,4 @@
-package com.compasso.challenge.register.domain.repository;
+package com.compasso.challenge.register.domain.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,12 +9,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.compasso.challenge.register.domain.model.Client;
+import com.compasso.challenge.register.domain.repository.GenericRepositoryTest;
 import com.compasso.challenge.register.domain.service.ClientService;
 
-public class ClientRepositoryTest extends GenericRepositoryTest<Client> {
+public class ClientServiceTest extends GenericRepositoryTest<Client> {
 
 	@Autowired
-	ClientService clientService;
+	private ClientService clientService;
 
 	@Test
 	@DisplayName("Teste de busca de cliente por CPF")

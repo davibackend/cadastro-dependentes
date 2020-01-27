@@ -11,6 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.compasso.challenge.register.domain.model.BaseObject;
+import com.compasso.challenge.register.domain.model.GenericMock;
 import com.compasso.challenge.register.domain.repository.GenericRepository;
 
 @RunWith(SpringRunner.class)

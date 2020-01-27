@@ -1,4 +1,4 @@
-package com.compasso.challenge.register.domain.repository;
+package com.compasso.challenge.register.domain.model;
 
 import javax.persistence.EntityManager;
 

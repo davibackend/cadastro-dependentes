@@ -1,4 +1,4 @@
-package com.compasso.challenge.register.domain.repository;
+package com.compasso.challenge.register.domain.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,10 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.compasso.challenge.register.domain.model.Client;
 import com.compasso.challenge.register.domain.model.Dependent;
+import com.compasso.challenge.register.domain.repository.GenericRepositoryTest;
 import com.compasso.challenge.register.domain.service.ClientService;
 import com.compasso.challenge.register.domain.service.DependentService;
 
-public class DependentRepositoryTest extends GenericRepositoryTest<Dependent> {
+public class DependentServiceTest extends GenericRepositoryTest<Dependent> {
 
 	@Autowired
 	DependentService dependentService;
