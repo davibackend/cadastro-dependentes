@@ -1,4 +1,4 @@
-package com.compasso.desafio;
+package com.compasso.challenge.register.domain.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,8 +10,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.compasso.desafio.cadastro.domain.model.BaseObject;
-import com.compasso.desafio.cadastro.domain.repository.GenericRepository;
+import com.compasso.challenge.register.domain.model.BaseObject;
+import com.compasso.challenge.register.domain.repository.GenericRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

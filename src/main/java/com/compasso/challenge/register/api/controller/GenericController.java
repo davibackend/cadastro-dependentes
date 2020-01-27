@@ -1,6 +1,8 @@
-package com.compasso.desafio.cadastro.api.controller;
+package com.compasso.challenge.register.api.controller;
 
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,8 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.compasso.desafio.cadastro.domain.model.BaseObject;
-import com.compasso.desafio.cadastro.domain.service.GenericService;
+import com.compasso.challenge.register.domain.model.BaseObject;
+import com.compasso.challenge.register.domain.service.GenericService;
 
 public class GenericController<E extends BaseObject> {
 
@@ -30,20 +32,20 @@ public class GenericController<E extends BaseObject> {
 		return service.findObjectById(id);
 	}
 
-	//TODO validacao igual aos services.
-	@PostMapping("/cadastrar")
+	@PostMapping("/insert")
 	@ResponseStatus(HttpStatus.CREATED)
-	public E cadastrarCliente(@RequestBody E dadosCliente) {
-		return service.insert(dadosCliente);
+	public E insert(@Valid @RequestBody E entity) {
+		return service.insert(entity);
 	}
 
-	@PutMapping("/atualizar/{id}")
-	public E atualizar(@RequestBody E dadosCliente, @PathVariable Long id) {
-		return service.update(dadosCliente, id);
+	@PutMapping("/update/{id}")
+	public E update(@RequestBody E entity, @PathVariable Long id) {
+		return service.update(entity, id);
 	}
 
-	@DeleteMapping("/deletar/{id}")
-	public void deletar(@PathVariable Long id) {
+	@DeleteMapping("/delete/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable Long id) {
 		service.delete(id);
 	}
 
