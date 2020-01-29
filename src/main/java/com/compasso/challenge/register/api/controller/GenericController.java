@@ -32,18 +32,18 @@ public class GenericController<E extends BaseObject> {
 		return service.findObjectById(id);
 	}
 
-	@PostMapping("/insert")
+	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public E insert(@Valid @RequestBody E entity) {
 		return service.insert(entity);
 	}
 
-	@PutMapping("/update/{id}")
+	@PutMapping("/{id}")
 	public E update(@RequestBody E entity, @PathVariable Long id) {
 		return service.update(entity, id);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		service.delete(id);

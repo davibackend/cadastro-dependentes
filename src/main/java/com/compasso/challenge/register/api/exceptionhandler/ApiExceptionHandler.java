@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.compasso.challenge.register.domain.exception.EntityAlreadyExistsException;
 import com.compasso.challenge.register.domain.exception.EntityNotFoundException;
 
 @ControllerAdvice
@@ -26,11 +27,20 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());
-		body.put("message", "Entity not found");
+		body.put("message", ex.getMessage());
 		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
 	}
 
-	//TODO verificar como colocar o nome do campo que esta invalido
+	@ExceptionHandler(EntityAlreadyExistsException.class)
+	public ResponseEntity<Object> handleCityNotFoundException(EntityAlreadyExistsException ex, WebRequest request) {
+
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("message", ex.getMessage());
+		return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+	}
+
+	// TODO verificar como colocar o nome do campo que esta invalido
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {

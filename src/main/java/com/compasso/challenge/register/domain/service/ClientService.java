@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.compasso.challenge.register.domain.exception.EmailCpfAlreadyExistsException;
 import com.compasso.challenge.register.domain.exception.EmailCpfNotFoundException;
 import com.compasso.challenge.register.domain.model.Client;
 import com.compasso.challenge.register.domain.model.Dependent;
@@ -52,9 +53,9 @@ public class ClientService extends GenericService<Client> {
 	// @ControllerAdvice
 	private void isValidRequestToInsert(Client entity) {
 		if (clientRepository.findByEmail(entity.getEmail()).isPresent()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Entity with this email already exist.");
+			throw new EmailCpfAlreadyExistsException(entity.getEmail());
 		} else if (clientRepository.findByCpf(entity.getCpf()).isPresent()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Entity with this cpf already exist.");
+			throw new EmailCpfAlreadyExistsException(entity.getCpf());
 		}
 	}
 

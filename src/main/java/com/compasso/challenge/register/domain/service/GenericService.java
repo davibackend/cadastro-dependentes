@@ -10,6 +10,9 @@ import com.compasso.challenge.register.domain.repository.GenericRepository;
 
 public abstract class GenericService<E extends BaseObject> {
 
+	public static final String MSG_ENTITY_EMAIL_DUPLICATED = "entity with email %s has already exists";
+	public static final String MSG_ENTITY_CPF_DUPLICATED = "entity with cpf %d has already exists";
+
 	@Autowired
 	public GenericRepository<E> genericRepository;
 
