@@ -3,10 +3,9 @@ package com.compasso.challenge.register.domain.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
+import com.compasso.challenge.register.domain.exception.EmailCpfAlreadyExistsException;
 import com.compasso.challenge.register.domain.exception.EmailCpfNotFoundException;
 import com.compasso.challenge.register.domain.exception.EntityNotFoundException;
 import com.compasso.challenge.register.domain.model.Dependent;
@@ -36,13 +35,11 @@ public class DependentService extends GenericService<Dependent> {
 		return super.insert(entity);
 	}
 
-	// TODO refactory reuso no ClientService -> verificar possibilidade do uso de
-	// @ControllerAdvice
 	private void isValidRequestToInsert(Dependent entity) {
 		if (dependentRepository.findByEmail(entity.getEmail()).isPresent()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Entity with this email already exist.");
+			throw new EmailCpfAlreadyExistsException(entity.getEmail());
 		} else if (dependentRepository.findByCpf(entity.getCpf()).isPresent()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Entity with this cpf already exist.");
+			throw new EmailCpfAlreadyExistsException(entity.getCpf());
 		}
 	}
 
