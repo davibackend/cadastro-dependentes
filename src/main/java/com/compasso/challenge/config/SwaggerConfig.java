@@ -1,6 +1,6 @@
 package com.compasso.challenge.config;
 
-import java.util.ArrayList;
+import java.util.Collections;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,6 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
-import springfox.documentation.service.VendorExtension;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
@@ -25,9 +24,9 @@ public class SwaggerConfig {
 
 	private ApiInfo metaInfo() {
 
-		ApiInfo apiInfo = new ApiInfo("Register of Dependents", "API REST of registration of dependents", "1.0",
+		ApiInfo apiInfo = new ApiInfo("Register of Dependents", "Dependent Registration REST API", "1.0",
 				"Terms of Service", new Contact("Davi Villela", "", "davilindoso1@gmail.com"), "License Version 1.0",
-				"licenseversion.com", new ArrayList<VendorExtension>());
+				"licenseversion.com", Collections.emptyList());
 
 		return apiInfo;
 	}
